@@ -4,6 +4,7 @@ import com.pack.family.exception.FamilyMemberAlreadyExistsException;
 import com.pack.family.exception.FamilyMemberNotFoundException;
 import com.pack.family.model.FamilyMember;
 import com.pack.family.repository.FamilyMemberRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,5 +57,17 @@ public class FamilyMemberServiceImpl {
 			return familyMember;
 		}
 		throw new FamilyMemberNotFoundException("Family member not found");
+	}
+	
+	public FamilyMember loginUser(String email, String password) throws FamilyMemberNotFoundException {
+
+		FamilyMember familyMember = familyMemberRepository.findByEmailAndPassword(email,password).orElse(null);
+		if (familyMember != null) {
+			return familyMember;
+
+		} else {
+			throw new FamilyMemberNotFoundException("Family member not found");
+		}
+
 	}
 }

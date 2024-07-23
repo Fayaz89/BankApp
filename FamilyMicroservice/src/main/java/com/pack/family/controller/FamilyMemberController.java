@@ -3,6 +3,7 @@ package com.pack.family.controller;
 import com.pack.family.exception.FamilyMemberAlreadyExistsException;
 import com.pack.family.exception.FamilyMemberNotFoundException;
 import com.pack.family.model.FamilyMember;
+import com.pack.family.model.Login;
 import com.pack.family.response.ResponseHandler;
 import com.pack.family.service.FamilyMemberService;
 import com.pack.family.service.FamilyMemberServiceImpl;
@@ -57,4 +58,12 @@ public class FamilyMemberController {
     	return ResponseHandler.generateResponse("Deleted family member successfully", HttpStatus.OK,
     			familyMemberService.deleteFamilyMember(memberId));
     }
+    
+	
+	@PostMapping("/login")
+	public ResponseEntity<?> loginUser(@RequestBody Login login) throws FamilyMemberNotFoundException{
+			
+		return ResponseHandler.generateResponse("Successfully retrieved data!", HttpStatus.OK,
+				familyMemberService.loginUser(login.getEmail(), login.getPassword()));
+	}
 }

@@ -11,6 +11,7 @@ import com.pack.family.model.FamilyMember;
 @Repository
 public interface FamilyMemberRepository extends JpaRepository<FamilyMember, Integer>{
 
+	Optional<FamilyMember> findByEmailAndPassword(String email,String password);
 	List<FamilyMember> findByUserId(int userId);
     Optional<FamilyMember> findByUserIdAndMemberId(int userId, int memberId);
 }

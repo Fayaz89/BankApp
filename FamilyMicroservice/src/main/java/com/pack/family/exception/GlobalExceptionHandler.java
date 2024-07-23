@@ -30,12 +30,12 @@ public class GlobalExceptionHandler {
 				exception.getMessage());
 	}
 
-//	@ExceptionHandler(DataIntegrityViolationException.class)
-//	public ResponseEntity<Object> duplicateEmailException(DataIntegrityViolationException e) {
-//
-//		//logger.error("EXCEPTION_DUPLICATE_EMAIL");
-//		return ResponseHandler.generateResponse("EXCEPTION_DUPLICATE_EMAIL", HttpStatus.CONFLICT, null);
-//	}
+	@ExceptionHandler(DataIntegrityViolationException.class)
+	public ResponseEntity<Object> duplicateEmailException(DataIntegrityViolationException e) {
+
+		//logger.error("EXCEPTION_DUPLICATE_EMAIL");
+		return ResponseHandler.generateResponse("EXCEPTION_DUPLICATE_EMAIL", HttpStatus.CONFLICT, null);
+	}
 	@ExceptionHandler(FamilyMemberAlreadyExistsException.class)
 	public ResponseEntity<Object> handleFamilyMemberAlreadyExistsException(FamilyMemberAlreadyExistsException exception) {
 
